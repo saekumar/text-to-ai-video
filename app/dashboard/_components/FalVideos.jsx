@@ -15,11 +15,7 @@ const FalVideos = () => {
     }
 
     try {
-      const res = await axios.get('/api/gat-fal-videos', {
-        params: {
-          clerkId: user.id, // Pass clerkId dynamically
-        },
-      })
+      const res = await axios.get('/api/gat-fal-videos')
       console.log(res)
       setFalVideos(res.data)
     } catch (error) {
