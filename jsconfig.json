@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // Ensures paths are relative to the project root
+    "paths": {
+      "@/*": ["./*"], // Existing alias setup
+      "shad-cn-ui": ["node_modules/shad-cn-ui"] // Add this if necessary for IntelliSense
+    }
+  },
+  "exclude": ["node_modules", ".next"] // Exclude build artifacts
+}
