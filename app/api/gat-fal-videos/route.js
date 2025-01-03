@@ -1,13 +1,12 @@
 import { NextResponse } from 'next/server'
 import db from '@/lib/prisma'
-
+import { getAuth } from '@clerk/nextjs/server'
 export async function GET(req) {
-  const { searchParams } = new URL(req.url)
-  const clerkId = searchParams.get('clerkId')
-  console.log('clerkId:', clerkId)
-
+  const { userId: clerkId } = getAuth(req) // Retrieve clerkId
   if (!clerkId) {
-    return NextResponse.json({ error: 'clerkId is required' }, { status: 400 })
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401,
+    })
   }
 
   try {
